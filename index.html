@@ -31,6 +31,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.4rem 3.5rem;displa
 .nav-links{display:flex;gap:2.5rem;list-style:none}
 .nav-links a{font-size:.68rem;letter-spacing:.18em;color:var(--t2);text-decoration:none;text-transform:uppercase;transition:color .3s}
 .nav-links a:hover{color:var(--sand)}
+.nav-menu-toggle{display:none;width:42px;height:42px;border:1px solid rgba(200,90,26,.35);background:rgba(12,8,4,.7);color:var(--sand);font-size:1.2rem;cursor:pointer}
 .nav-audio{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;padding:.55rem 1.2rem;border:1px solid rgba(200,90,26,.4);color:var(--ochre);background:transparent;cursor:pointer;transition:all .3s;font-family:'Raleway',sans-serif}
 .nav-audio:hover{background:rgba(200,90,26,.12);border-color:var(--ochre)}
 .nav-audio[aria-pressed="true"]{color:var(--sand);border-color:var(--ochre);background:rgba(200,90,26,.12);box-shadow:0 0 22px rgba(200,90,26,.1)}
@@ -235,7 +236,17 @@ footer{background:#070504;border-top:1px solid rgba(200,90,26,.12);padding:4.5re
 
 /* Responsive */
 @media(max-width:900px){
-  nav{padding:1rem 1.5rem}.nav-links{display:none}
+  body{cursor:auto}
+  .cursor-glow,.cursor-dot{display:none}
+  nav{padding:.8rem 1.1rem;background:rgba(12,8,4,.96);border-bottom:1px solid rgba(200,90,26,.12);gap:.7rem}
+  .nav-logo{font-size:.66rem;letter-spacing:.18em;max-width:45%;line-height:1.35}
+  .nav-menu-toggle{display:block;order:2;flex-shrink:0}
+  .nav-audio{order:1;margin-left:auto;padding:.65rem .8rem;font-size:.56rem;letter-spacing:.08em;white-space:nowrap}
+  .nav-links{position:absolute;display:flex;top:100%;left:0;right:0;flex-direction:column;gap:0;padding:.5rem 1.1rem 1rem;background:rgba(12,8,4,.98);border-bottom:1px solid rgba(200,90,26,.25);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .25s,transform .25s,visibility .25s}
+  .nav-links.open{opacity:1;visibility:visible;transform:translateY(0)}
+  .nav-links li{border-bottom:1px solid rgba(200,90,26,.1)}
+  .nav-links li:last-child{border-bottom:0}
+  .nav-links a{display:block;padding:.9rem .25rem;font-size:.65rem}
   .about-wrap,.kumiai-wrap,.vr-layout{grid-template-columns:1fr;gap:3rem}
   .exh-grid{grid-template-columns:1fr 1fr}.exh-card.tall{grid-row:span 1;min-height:auto;aspect-ratio:4/3}
   .tl-spine{left:14px}.tl-event{grid-template-columns:20px 1fr;gap:1.5rem;min-height:190px}
@@ -247,6 +258,46 @@ footer{background:#070504;border-top:1px solid rgba(200,90,26,.12);padding:4.5re
   .ft-grid{grid-template-columns:1fr 1fr;gap:2rem}
   .rooms-menu{width:100%;min-width:0}.rooms-dropdown{left:0;right:auto;width:100%}
   section{padding:5rem 0}.container{padding:0 1.5rem}
+}
+@media(max-width:600px){
+  #hero{height:auto;min-height:100svh;padding:7rem 0 5rem}
+  .hero-content{padding:0 1.15rem;transform:none}
+  .hero-pre{font-size:.55rem;letter-spacing:.25em;line-height:1.7;margin-bottom:1.25rem}
+  .hero-title{font-size:clamp(2.25rem,13vw,3.6rem);line-height:1.02;margin-bottom:1.1rem}
+  .hero-title em{font-size:.42em;line-height:1.4;margin-bottom:.45rem}
+  .hero-sub{font-size:1.08rem;line-height:1.45;margin-bottom:2rem}
+  .hero-actions{flex-direction:column;gap:.8rem;width:min(100%,320px);margin:0 auto}
+  .btn-enter,.btn-tour{width:100%;padding:.9rem 1rem;font-size:.62rem}
+  .hero-scroll{bottom:1rem}.cave-panorama{height:34%}.cave-panorama svg{width:420%}
+  section{padding:4rem 0}.container{padding:0 1.1rem}
+  .label{font-size:.56rem;letter-spacing:.28em;line-height:1.6}
+  .h2{font-size:clamp(1.65rem,8vw,2.3rem)}
+  .body-text{font-size:.9rem;line-height:1.8}
+  .about-wrap,.kumiai-wrap,.vr-layout{gap:2.3rem}
+  .cave-portal{aspect-ratio:4/4.6}
+  .about-data{gap:.7rem;margin-top:2rem}
+  .data-card{padding:1.1rem .8rem}.data-n{font-size:1.65rem}.data-l{font-size:.53rem;letter-spacing:.1em;line-height:1.4}
+  .exh-header{align-items:stretch;margin-bottom:2rem}
+  .exh-grid{grid-template-columns:1fr;gap:1rem}
+  .exh-card,.exh-card.tall,.exh-card:not(.tall){aspect-ratio:4/3;min-height:0}
+  .exh-visual{padding:1rem}.exh-foot{padding:1.1rem}.exh-tag{font-size:.5rem;letter-spacing:.2em}.exh-name{font-size:.85rem}
+  .exh-btn{opacity:1}
+  .rooms-dropdown{position:fixed;top:74px;left:1rem;right:1rem;width:auto;max-height:calc(100svh - 90px);overflow-y:auto}
+  .room-option{padding:.9rem}.room-option-info{font-size:.64rem}
+  .k-feat{gap:1rem;padding:1rem}.k-text{font-size:.72rem}
+  .kumiai-mosaic{gap:.65rem}.km-cell{padding:1.1rem .65rem}.km-cell.wide{aspect-ratio:2/1.15}.km-name{font-size:.72rem}.km-sub{font-size:.58rem;line-height:1.45}
+  .tl-header{margin-bottom:3.5rem;text-align:left}.tl-header .body-text{margin:0}.tl-header .divider{margin-left:0!important}
+  .tl-event{min-height:220px;margin-bottom:2.5rem;gap:1rem}.tl-body{font-size:.75rem;line-height:1.65;padding-right:.2rem}
+  .tl-paint,.tl-event.has-left .tl-paint,.tl-event.has-right .tl-paint{width:90px;height:70px;right:0;bottom:0}
+  #pullquote{padding:4rem 0}.q-glyph{font-size:6rem}.q-text{font-size:1.25rem;line-height:1.55}.q-credit{font-size:.52rem;letter-spacing:.2em;line-height:1.6}
+  .vr-layout{margin-top:2.5rem}.vr-play{width:54px;height:54px;font-size:1.2rem}.vr-label{left:.8rem;bottom:.7rem}.vr-badge{top:.6rem;left:.6rem}
+  .vr-features{gap:1.2rem}.vrf{gap:1rem;padding-bottom:1.2rem}.vrf-icon{width:40px;height:40px}.vrf-body{font-size:.7rem}
+  .modal-overlay{align-items:flex-end}.modal{width:100%;max-height:88svh;padding:2.8rem 1.2rem 1.5rem;border-left:0;border-right:0;border-bottom:0}.modal-title{font-size:1.3rem}.modal-tag{font-size:.52rem;letter-spacing:.22em;padding-right:2rem}.modal-body{font-size:.8rem;line-height:1.75}.modal-art{margin:1.2rem 0}.modal-art svg{max-width:100%;height:auto}
+  footer{padding:3.5rem 0}.ft-grid{grid-template-columns:1fr;gap:2rem}.ft-blurb{max-width:none}.ft-bottom{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:390px){
+  nav{padding:.7rem .75rem}.nav-logo{font-size:.58rem;max-width:38%}.nav-audio{font-size:0;width:42px;height:42px;padding:0}.nav-audio::before{content:'♫';font-size:1rem}.nav-menu-toggle{width:40px;height:40px}
+  .container{padding:0 .9rem}.about-data{grid-template-columns:1fr 1fr}
 }
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
 </style>
@@ -268,6 +319,7 @@ footer{background:#070504;border-top:1px solid rgba(200,90,26,.12);padding:4.5re
     <li><a href="https://youtu.be/GArqjnt10WY?si=GB2C74BpHJ3uBGik" target="_blank" rel="noopener noreferrer">Tour Virtual</a></li>
   </ul>
   <button class="nav-audio" type="button" aria-pressed="false" onclick="toggleAudio(this)">🔇 Activar ambiente</button>
+  <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menú" onclick="toggleMobileNav(this)">☰</button>
 </nav>
 
 <!-- HERO -->
@@ -1091,6 +1143,24 @@ document.addEventListener('mousemove', e => {
   dot.style.top   = e.clientY + 'px';
 });
 
+function toggleMobileNav(button, forceOpen) {
+  const links = document.querySelector('.nav-links');
+  const shouldOpen = typeof forceOpen === 'boolean'
+    ? forceOpen
+    : !links.classList.contains('open');
+  links.classList.toggle('open', shouldOpen);
+  button.setAttribute('aria-expanded', String(shouldOpen));
+  button.setAttribute('aria-label', shouldOpen ? 'Cerrar menú' : 'Abrir menú');
+  button.textContent = shouldOpen ? '×' : '☰';
+}
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    const button = document.querySelector('.nav-menu-toggle');
+    if (button) toggleMobileNav(button, false);
+  });
+});
+
 // ── EMBERS ──────────────────────────────────────────────
 const emberContainer = document.getElementById('embers');
 for (let i = 0; i < 28; i++) {
@@ -1330,6 +1400,8 @@ function closeModal() {
 }
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
+    const mobileButton = document.querySelector('.nav-menu-toggle');
+    if (mobileButton) toggleMobileNav(mobileButton, false);
     toggleRoomsMenu(false);
     closeModal();
   }
